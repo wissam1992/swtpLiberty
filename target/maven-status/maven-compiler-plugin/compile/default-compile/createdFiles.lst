@@ -1,0 +1,12 @@
+demo\model\NoteContainer.class
+demo\DemoRestApplication.class
+demo\api\security\PasswordEnc.class
+demo\api\NoteController$NoteInputData.class
+demo\model\User.class
+db\Person.class
+demo\model\UserManager.class
+demo\api\LoginController.class
+demo\api\RegisterController.class
+demo\api\NoteController.class
+demo\api\security\AccessManager.class
+demo\model\Note.class

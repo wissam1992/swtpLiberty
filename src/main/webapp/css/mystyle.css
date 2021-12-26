@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+body  {
+
+	background-color: #f5cba7;
+	
+}
+
+#map {
+	position: relative;
+	height: 700px;
+	width: 73.9%;
+	background-color: white;
+
+	
+}
+#register input{
+	width: 240px;
+
+}
+header{
+	position: relative;
+	margin: 0px;
+	padding: 0px;
+	margin-bottom: 5px;
+	
+}
+#footer{
+	position: relative;
+	height: 235px;
+	width: 100%;
+	margin: 5px 10px 0px 0px;
+	background-color: aliceblue;
+
+
+}
+
+aside{
+	padding: 2px;
+	background-color: rgb(168, 156, 156);
+	position: absolute;
+	top: 33px;
+	right: 5px;
+	height: 700px;
+	width: 355px;
+
+
+}
+#kneipe_info{
+	border: 1px solid;
+	
+}
+#register{
+	position: absolute;
+	top: 30px;
+	left: 30px;
+	
+	width: 400px;
+	border: 3px solid rgb(201, 178, 143);
+	background-color: antiquewhite;
+	z-index: 1000;
+	padding: 15px;
+
+}
+
+
+
+

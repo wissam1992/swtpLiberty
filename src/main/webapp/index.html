@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+<link rel="stylesheet" type="text/css" href="css/mystyle.css" >
+<link rel="stylesheet" href="css/rating.css">
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+			
+<script type="text/javascript" src="js/map.js"></script>
+<!--
+	<script type="text/javascript" src="js/utils.js"></script>
+	<script type="text/javascript" src="js/restCalls.js"></script>
+-->  
+
+
+<script type="text/javascript" src="js/register.js"></script>
+<title>OpenLayers example</title>
+</head>
+<body >
+	<div class="container">
+		<!--Header-->
+		<header>
+			<div id="welcom_div" style="display:none; height: 5px;width:20% ;">
+				<span id="welcome"></span>
+			<span><button onclick="abmelden()">Abmelden</button></span>	
+			</div>
+		
+			<div id="login"> <span>Benutzer:</span><input type="text" id="username">
+				<span>Password:</span><input type="text" id="password">
+
+				 <button type="button" onclick="login()">Anmelden</button>
+				<span style="float: right;white-space: nowrap;">
+					<a href="javascript:show_register()">Als neuer Benutzer registrieren</a>
+				</span>
+				<div id="accessError" style="color: red;"></div>
+
+		</div> 
+	
+		</header>
+		<!-- Header Ende-->
+
+		<article class="art">	
+
+			<div id="map"></div>
+
+	
+	
+		</article>
+		<aside style="" >
+					<!--Info-->
+			<div  id="info"  style="">
+				<table>
+				<tr><td><h3>kein Ort ausgewählt</h3></td>
+					<td><button id="infobtn" onclick="show_info()">Info</button>
+					</td>
+				</tr>
+				</table>
+			</div>
+				<!--Info Ende-->
+
+			<div id="kneipe_info" style="display:none ;"><h1>Nähere Informationen</h1>
+			
+			<button onclick="hide_info()">Schließen</button></div>
+			<!-- Bewertung abgeben-->
+			<div id="rate" style="border: 1px solid;">
+				
+				<h1>Bewertung abgeben </h1>
+				<table>
+					<tr>
+						<td>Bewertung</td>
+						<td>
+							<fieldset class="rating">
+								
+								<input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+								<input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+								<input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+								<input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+								<input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+							</fieldset>
+						</td>
+					
+					</tr>
+				
+				</table>
+				<h4>Kommentar</h4>
+					
+				<textarea name="comment" id="comment" style="width: 80%;height: 40px; margin-left: 5px;"></textarea>
+				<h4>Bild hochladen</h4>
+				<input type="file">
+			
+				<br><br>
+				<button>absenden</button>
+				
+				
+			
+			</div>
+			<!-- Bewertung abgeben Ende-->
+		
+		</aside>
+			
+	
+
+		<!--Footer-->
+		<footer id="footer">
+
+
+			<h3>Meine Bewertungen:</h3>
+			<a href=""></a>
+		</footer>
+		
+	
+			<!--Footer Ende-->
+	</div>
+	<!--Container Ende-->
+	
+
+
+	
+	
+</body>
+<div id="register" style="display: none;">
+
+	<h3>Registerierung</h3>
+	<table class="registertable">
+		<tr><td>Vorname</td><td><input type="text" id="vname" onkeyup="checkname('vname')" onblur="checkvnameformat()" onfocus="chekvnameonfocus()"></td></tr>
+		<tr><td>Nachname</td><td><input type="text" id="nname" onkeyup="checkname(nname)" onblur="checknnameformat()" onfocus="cheknnameonfocus()"></td></tr>
+		<tr><td>Straße</td><td><input type="text" style="width: 150px;" id="str" onkeyup="CheckStreet()" onblur="checkstreetonblur()" onfocus="checkstreetonfocus()"/>
+				<span style="float: right;">Nr:<input type="text" id="strnr" onkeyup="CheckStreetNr()" onblur="CheckStrNrOnBlur()" onfocus="CheckStrNrOnFocus()" style="width: 40px;"></span></td></tr>
+		<tr><td>PLZ</td><td><input type="text" id="plz" style="width: 50px;" onkeyup="getPlzFromEscher()" onfocus="checkPlzOnFocus()" onblur="checkPlzOnBlur()"/><span style="float: right;">Ort<input type="text" id="ort" style="width: 140px;"></span></td></tr>
+		<tr><td>Email</td><td><input type="text" id="email" onkeyup="checkEmail()" onblur="checkEmailOnBlur()" onfocus="checkEmailOnFocus()"></td></tr>
+		<tr><td>Benutzer-ID</td><td><input type="text" id="userid" onkeyup="checkuserid()" onblur="checkuseridonblur()" onfocus="checkuseridonfocus()"></td></tr>
+		<tr><td>Password</td><td><input type="text" id="reg_password"></td></tr>
+		<tr><td>Passwortsiceherheit</td><td><canvas id="canvas" width="250px" height="25px" ></canvas></td></tr>
+		
+		<tr><td>&nbsp;</td><td align="center">
+			<button id="reg_btn" disabled  onclick="register()">Registrieren</button>
+			<button onclick="hide_register()">Abbrechen</button>
+				
+		</td></tr>
+	</table>
+	<p> <div id="errorbenutzer" style="color: red;"></div> </p>
+	<p> <div id="errorvname" style="color: red;"></div> </p>
+	<p> <div id="errornname" style="color: red;"></div> </p>
+	<p> <div id="errorEmail" style="color: red;"></div> </p>
+	<p> <div id="errorPlz" style="color: red;"></div> </p>
+	<p> <div id="errorstreetNr" style="color: red;"></div> </p>
+	<p> <div id="errorstreet" style="color: red;"></div> </p>
+	<p> <div id="erroruserid" style="color: red;"></div> </p>
+	
+</div>
+</html>
